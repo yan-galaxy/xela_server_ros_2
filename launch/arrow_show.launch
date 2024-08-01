@@ -1,0 +1,6 @@
+<launch>
+    <node pkg="xela_server_ros" type="subscriber_sensor" name="subscriber_sensor" output="screen" />
+
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find xela_server_ros)/config/arrow_rviz.rviz"/>
+
+</launch>

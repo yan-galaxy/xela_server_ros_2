@@ -7,6 +7,8 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   geometry_msgs
   message_generation
+  visualization_msgs  # 添加对visualization_msgs的依赖
+  tf                  # 添加对tf的依赖
 )
 ################################################
 ## Declare ROS messages, services and actions ##
@@ -46,6 +48,15 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
+#添加pthread
+set(CMAKE_CXX_FLAGS -pthread)
+message(STATUS "CMAKE_CXX_FLAGS = ${CMAKE_CXX_FLAGS}")
+
+# 添加可执行目标
+add_executable(subscriber_sensor src/subscriber_sensor.cpp)
+
+# 链接ROS包
+target_link_libraries(subscriber_sensor ${catkin_LIBRARIES} )
 #############
 ## Install ##
 #############
